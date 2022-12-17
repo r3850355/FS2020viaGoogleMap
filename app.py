@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from SimConnect import *
 
 # GOOGLE MAP API KEY
-googleMapAPIKey = 'AIzaSyBotUSaJRU5RNUrhAQNbT3_9UUMlf54zVU'
+googleMapAPIKey = ''
 
 # Create simconnection
 sm = SimConnect()
