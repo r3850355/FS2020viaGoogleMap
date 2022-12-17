@@ -1,3 +1,11 @@
+# FS2020xGoogleMap
+
+![image](https://github.com/r3850355/FS2020viaGoogleMap/blob/main/image/frame_generic_dark.png)
+
+基於 Python 的 [SimConnect](https://github.com/odwdinc/Python-SimConnect) 專案精簡並重新構寫 web 頁面。
+
+用於連動 Microsoft Flight Simulator 2020 中的資料，並顯示在 GoogleMaps 上。
+
 ## 一、安裝
 
 ##### ⭐步驟 1
@@ -40,6 +48,62 @@ googleMapAPIKey = 'AIzaSbbotUSaaRUaRNsrhAQNbT3_1XUMlf64zVx'
 
 
 > ⭐ Google Maps API 在有限額度內是完全免費的。免費額度會每天重置，以個人使用的話幾乎用不完
+
+## API Documentation
+
+Fron-End Code [Here✋](https://github.com/r3850355/MSFS-with-googlemap)
+
+#### ⭐ GET /api/navigation
+get navigation data for map display, including `PLANE_ALTITUDE`, `PLANE_LATITUDE`, `PLANE_LONGITUDE`, `PLANE_HEADING_DEGREES_TRUE`, `GROUND_VELOCITY`.
+
+#### ⭐ GET /api/get/{datapoint_name}
+
+get [Simulation Variables](https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variables.htm) of MSFS2020.
+
+Example:
+
+```
+GET /api/get/GROUND_VELOCITY
+# get ground speed value
+```
+```
+# return ground speed
+313
+```
+
+#### ⭐ POST /api/event/{event_name}
+
+```
+BODY: { value: '' }
+```
+Emit events to FS2020.
+
+Check Offical SDK Document for more [Event IDs](https://docs.flightsimulator.com/html/Programming_Tools/Event_IDs/Event_IDs.htm).
+
+However, some event cannot be found or work on this SimConnect version.
+
+Example:
+
+```
+POST /api/event/STROBES_SET
+BODY: { value: 1 }
+# value 1 will turn on STROBES LIGHT
+```
+```
+# will return 'success' if command work
+success
+```
+
+### ⭐ POST /api/mobiflight/{event_name}
+```
+BODY: { value: '' }
+```
+just likes MSFS event, But this method work for mobiflight events.
+
+to use this method need to install mobiflight plugin for MSFS first.
+
+[Mobiflight Presets](https://hubhop.mobiflight.com/presets/)
+
 
 
 
