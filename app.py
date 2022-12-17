@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from SimConnect import *
 
 # GOOGLE MAP API KEY
-googleMapAPIKey = ''
+googleMapAPIKey = 'AIzaSyBotUSaJRU5RNUrhAQNbT3_9UUMlf54zVU'
 
 # Create simconnection
 sm = SimConnect()
@@ -60,7 +60,7 @@ def get_datapoint_endpoint(datapoint_name):
 
 	output = aq.get(datapoint_name)
 
-	return jsonify(output)
+	return output
 
 
 @app.route('/api/event/<event_name>', methods=["POST"])
